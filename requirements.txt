@@ -1,0 +1,10 @@
+flask
+pillow
+scikit-learn==0.20.1
+flask_cors
+joblib
+jupyter
+matplotlib
+Pillow
+numpy
+h5py

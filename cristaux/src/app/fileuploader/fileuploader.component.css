@@ -1,0 +1,35 @@
+.formulaire{
+    margin-top: 20px;
+}
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    cursor:pointer;
+}
+
+.upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+
+.btn-primary {
+    background-color: #64a19d;
+}
+
+.btn-primary:hover {
+    background-color: #4f837f;
+}
+
+.btn-primary:focus {
+    background-color: #4f837f;
+    color: white;
+}
+
+.btn-primary:active {
+    background-color: #467370 !important;
+}

@@ -1,0 +1,33 @@
+nav {
+  display: flex;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #FFE4E1;
+}
+
+
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 10px 12px;
+}
+
+
+
+
+nav li {
+  justify-content: flex-start;
+  align-items: baseline;
+  display: block;
+  padding: 0 12px;
+}
+
+nav li a {
+  text-decoration: none;
+  color: black;
+  font-size: 1.3em;
+}

@@ -1,0 +1,107 @@
+
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">Classifieur de calculs urinaires</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item cliquable">
+          <a class="nav-link js-scroll-trigger" onclick="goTo('#about')">A propos</a>
+        </li>
+        <li class="nav-item cliquable">
+          <a class="nav-link js-scroll-trigger" onclick="goTo('#exemples')">Exemples</a>
+        </li>
+        <li class="nav-item cliquable">
+          <a class="nav-link js-scroll-trigger" onclick="goTo('#knowClass')">Classifier un calcul</a>
+        </li>
+        <li class="nav-item cliquable">
+          <a class="nav-link js-scroll-trigger" onclick="goTo('#upload')">Envoyer un calcul</a>
+        </li>
+        <li class="nav-item cliquable">
+          <a class="nav-link js-scroll-trigger" onclick="goTo('#contact')">Contacts</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Header -->
+<header class="masthead">
+  <div class="container d-flex h-100 align-items-center">
+    <div class="mx-auto text-center">
+      <h1 class="mx-auto my-0 text-uppercase">Projet CODEV</h1>
+      <h2 class="text-white-50 mx-auto mt-2 mb-5">Projet réalisé par COTTET Clément, PITTORE Axel et CALVI Alexis, avec la collaboration
+      des docteurs DENIS et ESTRADE et sous la tutelle de Christian VIAL
+      </h2>
+    </div>
+  </div>
+</header>
+
+<section id="about" class="about-section text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <h2 class="text-white mb-4">Objectif du projet</h2>
+        <p class="text-white-50" style="text-justify: inter-word; text-align:justify">
+          Ce projet a été réalisé dans un cadre scolaire à Polytech Lyon section informatique, dans le cadre d'un projet libre de co-développement.
+          L'idée a été suggérée aux étudiants par Christian VIAL et les docteurs Etienne DENIS et Vincent ESTRADE.
+          L'objectif était de développer une application web permettant de classifier un calcul urinaire.
+          Pour cela, nous avons entrainé un modèle de deep learning avec une base de données de photos déja classifiées (par les docteurs DENIS et ESTRADE).
+          Le modèle a été entraîné via la librairie TensorFlow en Python.
+          <br><br>
+          Notre modèle ne reconnait que les trois types de calculs urinaires les plus répendus (Ia, IIb et IIIb) à partir d'images de coupe et de sections.
+          Plus bas vous trouverez deux exemples de ses photos.
+          En machine learning, la précision, la variété et l'abondance de données améliorent les résultats de l'algorithme. Ainsi, nous avons également ajouter
+          un module qui permet d'uploader des images de calculs urinaires (uniquement pour les spécialistes car il faut préciser la classe).
+          <span>Vous avez besoin de lui, il a besoin de vous!</span>
+
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="exemples" class="projects-section bg-light" style="background-color: #161616!important">
+  <div class="container">
+    <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+      <div class="col-lg-6">
+        <img class="img-fluid" src="/assets/img/Va_SEC_2.png" alt="">
+      </div>
+      <div class="col-lg-6">
+        <div class="bg-black text-center h-100 project">
+          <div class="d-flex h-100">
+            <div class="project-text w-100 my-auto text-center text-lg-left">
+              <h4 class="text-white">Exemple de section</h4>
+              <p class="mb-0 text-white-50">Notre algorithme a été entrainé avec des photos prises par le même appareil (avec cette qualité
+                et cette luminosité). Si jamais votre photo a des caractéristiques très différentes, il est possible que ce calcul dupe notre modèle!</p>
+              <hr class="d-none d-lg-block mb-0 ml-0">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Two Row -->
+    <div class="row justify-content-center no-gutters">
+      <div class="col-lg-6">
+        <img class="img-fluid" src="/assets/img/Va_SUR_4.png" alt="">
+      </div>
+      <div class="col-lg-6 order-lg-first">
+        <div class="bg-black text-center h-100 project">
+          <div class="d-flex h-100">
+            <div class="project-text w-100 my-auto text-center text-lg-right">
+              <h4 class="text-white">Exemple de surface</h4>
+              <p class="mb-0 text-white-50">Si votre photo est celle d'une surface, voici un exemple.</p>
+              <hr class="d-none d-lg-block mb-0 mr-0">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

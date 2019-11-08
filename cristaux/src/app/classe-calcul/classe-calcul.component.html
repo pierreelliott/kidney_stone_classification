@@ -1,0 +1,53 @@
+<section id="knowClass" class="projects-section bg-light">
+  <div class="container">
+    <div class="row justify-content-center no-gutters">
+      <div class="col-xl-5 col-lg-7">
+        <label *ngIf="edited" for="file-input">
+          <img  [src]="url1" height="400" width="400" >
+        </label>
+      </div>
+      <div class="col-xl-7 col-lg-7">
+        <div class="featured-text text-center text-lg-left">
+            <h4>Je veux classifier ce calcul</h4>
+            <p class="text-black-50 mb-0">Ici, vous pouvez uploader une photo de calcul et nous allons essayer de la classer!</p>
+            <hr class="d-none d-lg-block mb-0 mr-0">
+
+            <div class="ligne">
+              <label for="type-image">Type de l'image (Section ou Surface):</label>
+              <select #typeImg id="type-image" (change)="this.typeImage = typeImg.value; reset()"  class="cliquable form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0">
+                <option class="cliquable" value="SEC">Section</option>
+                <option class="cliquable" value="SUR">Surface</option>
+              </select>
+            </div>
+
+            <div class="ligne">
+
+              <div class="upload-btn-wrapper" style="margin-top:10px;">
+                <button class="btn btn-primary cliquable">Télécharger l'image</button>
+                <input type="file" id="file-input" name="image"  ng2FileSelect [uploader]="uploader" (change)="readUrl($event)" class="mx-2"/>
+              </div>
+            </div>
+
+            <div class="ligne">
+              <button type="button" class="btn btn-primary js-scroll-trigger"
+                      (click)="uploader.uploadAll()"
+                      [disabled]="!uploader.getNotUploadedItems().length" >
+                {{this.button}}
+              </button>
+            </div>
+
+
+            <p class="text-black-100 mb-0" id="resultat" style="margin-top:20px;">
+
+            </p>
+
+            <!--  <app-uploader [typeOfUpload]="'calculs'"></app-uploader> -->
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+

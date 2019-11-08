@@ -1,0 +1,48 @@
+<input type="file" id="file-input" name="image"  ng2FileSelect [uploader]="uploader" (change)="readUrl($event)" />
+
+<button type="button" class="btn btn-success btn-s"
+        (click)="uploader.uploadAll()"
+        [disabled]="!uploader.getNotUploadedItems().length" >
+  {{this.button}}
+</button>
+<br>
+<br>
+
+<div *ngIf="this.typeOfUpload === 'upload'">
+  <label for="class-calcul">Classe du calcul sur l'image</label>
+  <select #classCalcul id="class-calcul" (change)="this.classeCalcul = classCalcul.value">
+    <option value="Ia">Ia</option>
+    <option value="IIb">IIb</option>
+    <option value="IIIb">IIIb</option>
+    <option value="Autre">Autre</option>
+  </select>
+
+  <label for="type-image">Type de l'image (Section ou Surface)</label>
+  <select #typeImg id="type-image" (change)="this.typeImage = typeImg.value">
+    <option value="SEC">Section</option>
+    <option value="SUR">Surface</option>
+  </select>
+
+  <br><br>
+
+  <p>
+    Vous devez vous identifier pour envoyer une image sur le serveur :
+  </p>
+  <label for="username">Identifiant</label>
+  <input #id type="text" id="username" (change)="this.username = id.value"/>
+  <br>
+  <label for="password">Mot de passe</label>
+  <input #mdp type="password" id="password" (change)="this.password = mdp.value"/>
+</div>
+
+<label *ngIf="edited" for="file-input">
+  <img  [src]="url1" height="400"  >
+</label>
+
+
+<label [hidden]="gottenResponse" id="classe">
+<h2>{{response.toString()}}</h2>
+</label>
+
+
+

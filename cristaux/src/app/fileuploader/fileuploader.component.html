@@ -1,0 +1,73 @@
+<section id="upload" class="projects-section bg-light">
+    <div class="container">
+
+        <!-- Featured Project Row -->
+        <div class="row align-items-center no-gutters mb-4 mb-lg-3">
+            <div class="col-xl-5 col-lg-7">
+                <label *ngIf="edited" for="file-input">
+                    <img  [src]="url2" height="400"  >
+                </label>
+            </div>
+            <div class="col-xl-7 col-lg-7">
+                <div class="featured-text text-center text-lg-left">
+                    <h4>J'apporte ma pierre à l'édifice</h4>
+                    <p class="text-black-50 mb-0">
+                        Si vous êtes un spécialiste et que vous avez des photos de calculs de qualitée honorable
+                        dont vous connaissez la classe, l'algorithme serait ravi que vous les partagiez afin de nourrir son savoir!
+                    </p>
+                    <div class="formulaire">
+                        <div class="ligne">
+                            <label for="class-calcul">Classe du calcul sur l'image:</label>
+                            <select #classCalcul id="class-calcul" (change)="this.classeCalcul = classCalcul.value" class="cliquable form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0">
+                                <option class="cliquable" value="Ia">Ia</option>
+                                <option class="cliquable" value="IIb">IIb</option>
+                                <option class="cliquable" value="IIIb">IIIb</option>
+                                <option class="cliquable" value="Autre">Autre</option>
+                            </select>
+                        </div>
+
+                        <div class="ligne">
+                            <label for="type-image">Type de l'image (Section ou Surface):</label>
+                            <select #typeImg id="type-image" (change)="this.typeImage = typeImg.value"  class="cliquable form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0">
+                                <option class="cliquable" value="SEC">Section</option>
+                                <option class="cliquable" value="SUR">Surface</option>
+                            </select>
+                        </div>
+
+                        <p style="margin-top: 10px;">
+                            <span style="color:red">*</span>
+                            Afin de garantir la pertinance de nos données, vous devez vous authentifier:
+                        </p>
+                        <div class="ligne">
+                            <label for="username">Identifiant</label>
+                            <input #id type="text" id="username" (change)="this.username = id.value" class="cliquable form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0"/>
+                        </div>
+                        <div class="ligne">
+                            <label for="password">Mot de passe</label>
+                            <input #mdp type="password" id="password" (change)="this.password = mdp.value" class="cliquable form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0"/>
+                        </div>
+
+
+                        <div class="ligne">
+                            <div class="upload-btn-wrapper" style="margin-top:10px;">
+                                <button class="btn btn-primary cliquable">Télécharger l'image</button>
+                                <input type="file" id="file-input" name="image"  ng2FileSelect [uploader]="uploader" (change)="readUrl($event)" class="cliquable mx-2"/>
+                            </div>
+                        </div>
+                        <div class="ligne">
+
+                            <button type="button" class="btn btn-primary js-scroll-trigger"
+                                    (click)="uploader.uploadAll()"
+                                    [disabled]="!uploader.getNotUploadedItems().length"  style="margin-top:10px;">
+                                {{this.button}}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+

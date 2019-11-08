@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Cristaux</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body onload="">
+  <script src="assets/js/grayscale.js"></script>
+  <script src="assets/js/notify.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+
+      function goTo(id){
+          $([document.documentElement, document.body]).animate({
+              scrollTop: $(id).offset().top
+          }, 2000);
+      }
+
+  </script>
+  <app-navbar></app-navbar>
+  <app-header></app-header>
+  <app-root></app-root>
+  <!-- Bootstrap core JavaScript -->
+
+</body>
+</html>
