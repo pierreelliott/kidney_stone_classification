@@ -1,0 +1,13 @@
+version: '3'
+services:
+  api:
+    image: ksc-api
+    container_name: ksc-api
+    ports:
+      - 8080:5000
+
+  webapp:
+    image: ksc-app
+    container_name: ksc-app
+    ports:
+      - 80:8080
