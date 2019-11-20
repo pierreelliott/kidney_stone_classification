@@ -1,14 +1,21 @@
-FROM python:3.7-slim
+FROM tensorflow/tensorflow:1.15.0-py3
 
 WORKDIR /code
 
-ENV FLASK_APP app.py
-ENV FLASK_RUN_HOST 0.0.0.0
+ENV FLASK_APP=app.py FLASK_RUN_HOST=0.0.0.0
 
 COPY ./requirements.txt .
+
 RUN pip install -r requirements.txt
-    && pip install --ignore-installed --upgrade https://github.com/lakshayg/tensorflow-build/releases/download/tf-1.14-ubuntu18.04-py3.7/tensorflow-1.14.1-cp37-cp37m-linux_x86_64.whl
-    # Not sure which tensorflow version we should use
+
 COPY ./api .
+
+# Define volumes for:
+#   - the dataset (used for training),
+#   - kidney stone images (uploaded on the API),
+#   - kidney stone images (labeled by user to enlarge dataset)
+VOLUME /dataset /upload /custom-dataset
+
 EXPOSE 5000
+
 CMD ["flask", "run"]

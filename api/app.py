@@ -11,10 +11,10 @@ import json
 import random
 from PIL import Image
 
-port = 8000
+port = 5000
 
-UPLOAD_FOLDER = './img_loaded'
-BD_FOLDER = './calculs'
+UPLOAD_FOLDER = '/upload'
+BD_FOLDER = '/custom-dataset'
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
