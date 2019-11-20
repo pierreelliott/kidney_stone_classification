@@ -44,7 +44,7 @@ def get_classe_cristal(type_of_image):
     Cette route permet de recuperer la photo d'un cristal envoye par l'utilisateur et de renvoyer la classe
     du cristal.
 
-    :param: type_of_image: String (SEC or SUR)
+    :param: type_of_image: String (SEC or SUR) TODO Explain SEC or SUR
     :return: String correspondant soit a la classification du cristal soit a un message d'erreur
     """
     if request.method == 'POST':
