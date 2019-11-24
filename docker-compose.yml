@@ -5,6 +5,8 @@ services:
     container_name: ksc-api
     ports:
       - 8080:5000
+    volumes:
+      - ./keras-cache:/root/.keras
 
   webapp:
     image: ksc-app

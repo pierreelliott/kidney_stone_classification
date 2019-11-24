@@ -14,7 +14,8 @@ COPY ./api .
 #   - the dataset (used for training),
 #   - kidney stone images (uploaded on the API),
 #   - kidney stone images (labeled by user to enlarge dataset)
-VOLUME /dataset /upload /custom-dataset
+#   - cache for keras model (otherwise it's downloaded every time the image is changed)
+VOLUME /dataset /upload /custom-dataset /root/.keras
 
 EXPOSE 5000
 
