@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
+import { environment } from '../../environments/environment.dev';
 
-const URL_classe = 'http://localhost:8000/classification_cristaux/classerCristal/SEC';
-const URL_upload = 'http://localhots:8000/classification_cristaux/chargerCristal';
+const URL_classe = `${environment.API_PATH}/classification_cristaux/classerCristal/SEC`;
+const URL_upload = `${environment.API_PATH}/classification_cristaux/chargerCristal`;
 
 @Component({
   selector: 'app-fileuploader',

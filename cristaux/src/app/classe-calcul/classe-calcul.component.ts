@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
+import { environment } from '../../environments/environment.dev';
 
 
-const URL_classe = 'http://calculs.clement-cottet.fr/classification_cristaux/classerCristal/';
-const URL_upload = 'http://calculs.clement-cottet.fr/classification_cristaux/chargerCristal';
+const URL_classe = `${environment.API_PATH}/classification_cristaux/classerCristal/`;
+const URL_upload = `${environment.API_PATH}/classification_cristaux/chargerCristal`;
 
 
 @Component({

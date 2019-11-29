@@ -2,3 +2,7 @@
 .idea/
 
 keras-cache/
+
+api/__pycache__/
+
+api/upload/

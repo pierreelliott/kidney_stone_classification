@@ -14,15 +14,17 @@ class Classifier:
 
     def __init__(self):
         self.vgg16 = keras.applications.vgg16.VGG16(include_top=False, weights='imagenet')
+        self.sess = tf.Session()
+        keras.backend.set_session(self.sess)
         self.graph = tf.get_default_graph()
-        self.model = joblib.load('0.907_2019-05-11 11-54-50.466169')
+        self.model = joblib.load('./0.907_2019-05-11 11-54-50.466169')
         self.class_names = ['IIIb', 'IIb', 'Ia', 'Autre']
 
     def set_type_of_image(self, type_of_image): #FIXME Why models aren't differents?
         if type_of_image == 'SEC':
-            self.model = joblib.load('0.907_2019-05-11 11-54-50.466169')
+            self.model = joblib.load('./0.907_2019-05-11 11-54-50.466169')
         else:
-            self.model = joblib.load('0.907_2019-05-11 11-54-50.466169')
+            self.model = joblib.load('./0.907_2019-05-11 11-54-50.466169')
 
     def _preprocess_img(self, img_path):
         img = np.array(Image.open(img_path).resize((500, 500)))
@@ -31,6 +33,7 @@ class Classifier:
         img_array = []
         img_array.append(img)
         img_array = np.array(img_array)
+        print(img_array)
         with self.graph.as_default():
             img_features = self.vgg16.predict(img_array)
             new_img_features = []
