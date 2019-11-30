@@ -13,9 +13,9 @@ import joblib
 class Classifier:
 
     def __init__(self):
-        self.vgg16 = keras.applications.vgg16.VGG16(include_top=False, weights='imagenet')
         self.sess = tf.Session()
         keras.backend.set_session(self.sess)
+        self.vgg16 = keras.applications.vgg16.VGG16(include_top=False, weights='imagenet')
         self.graph = tf.get_default_graph()
         self.model = joblib.load('./0.907_2019-05-11 11-54-50.466169')
         self.class_names = ['IIIb', 'IIb', 'Ia', 'Autre']
@@ -35,6 +35,7 @@ class Classifier:
         img_array = np.array(img_array)
         print(img_array)
         with self.graph.as_default():
+            keras.backend.set_session(self.sess)
             img_features = self.vgg16.predict(img_array)
             new_img_features = []
             for feature in img_features:
