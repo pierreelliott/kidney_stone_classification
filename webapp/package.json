@@ -30,6 +30,7 @@
     "jquery": "^3.4.0",
     "jquery-easing": "0.0.1",
     "ng2-file-upload": "^1.3.0",
+    "popper.js": "^1.14.7",
     "rxjs": "~6.2.0",
     "zone.js": "^0.8.29"
   },
