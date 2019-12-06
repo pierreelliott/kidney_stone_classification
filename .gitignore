@@ -6,3 +6,5 @@ keras-cache/
 api/__pycache__/
 
 api/upload/
+
+webapp/node_modules/

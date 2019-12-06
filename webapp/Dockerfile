@@ -3,7 +3,7 @@ FROM node:10.17-slim
 WORKDIR /app
 
 # copy both 'package.json' and 'package-lock.json' (if available)
-COPY ./package*.json .
+COPY ./package*.json ./
 
 RUN npm install -g http-server && npm install
 
