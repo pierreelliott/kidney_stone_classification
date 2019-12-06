@@ -3,13 +3,21 @@ services:
   api:
     image: ksc-api
     container_name: ksc-api
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
     ports:
       - 8080:5000
     volumes:
-      - ./keras-cache:/root/.keras
+      - ./data/keras-cache:/root/.keras
+      - ./data/upload:/upload
+      - ./data/custom-dataset:/custom-dataset
 
   webapp:
     image: ksc-app
     container_name: ksc-app
+    build:
+      context: ./webapp
+      dockerfile: Dockerfile
     ports:
       - 80:8080

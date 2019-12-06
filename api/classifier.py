@@ -33,7 +33,7 @@ class Classifier:
         img_array = []
         img_array.append(img)
         img_array = np.array(img_array)
-        print(img_array)
+        # print(img_array)
         with self.graph.as_default():
             keras.backend.set_session(self.sess)
             img_features = self.vgg16.predict(img_array)

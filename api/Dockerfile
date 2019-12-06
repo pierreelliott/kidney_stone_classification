@@ -1,14 +1,15 @@
-FROM tensorflow/tensorflow:1.15.0-py3
+FROM tensorflow/tensorflow:1.13.1-py3
 
 WORKDIR /code
 
 ENV FLASK_APP=app.py FLASK_RUN_HOST=0.0.0.0
 
-COPY ./requirements.txt .
+COPY ./api/requirements.txt .
 
 RUN pip install -r requirements.txt
 
 COPY ./api .
+COPY ./models/ ./models/
 
 # Define volumes for:
 #   - the dataset (used for training),

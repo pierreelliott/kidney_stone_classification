@@ -3,13 +3,13 @@ FROM node:10.17-slim
 WORKDIR /app
 
 # copy both 'package.json' and 'package-lock.json' (if available)
-COPY ./cristaux/package*.json ./
+COPY ./package*.json .
 
 RUN npm install -g http-server && npm install
 
 ENV API_PATH localhost:8080
 
-COPY ./cristaux ./
+COPY . .
 
 # build app for production with minification
 RUN npm run build
