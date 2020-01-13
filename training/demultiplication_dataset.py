@@ -6,6 +6,12 @@ transposition pour demultiplier le dataset original.
 from PIL import Image
 from os import listdir
 
+import numpy as np
+import skimage.io as io
+from skimage.transform import rotate, AffineTransform, warp
+from skimage.util import random_noise
+from skimage.filters import gaussian
+
 
 def list_files_from_directory(directory="img/", extension="jpg"):
     """
@@ -50,7 +56,92 @@ def demultiplier_image(img_name, img_directory, directory_new_dataset, number_of
         new_im.save(directory_new_dataset + img_name.split(".")[0] + "_" + str(nb_image+1) + ".jpg")
         nb_image += 1
 
+        
+# ============ FIXME ================
+# How will the dataset param look like: simple list of images or tuple (image, class) ?
 
+# ------------------------------------------------------------------------------------------
+# All demultiplication functions are based off a tutorial of image augmentation found here :
+# https://www.analyticsvidhya.com/blog/2019/12/image-augmentation-deep-learning-pytorch/
+        
+def rotate_dataset(dataset, angle):
+    """
+    Apply a rotation of given angle to all images in the dataset, returning the dataset plus the rotated ones.
+    
+    :param dataset: list of dataset images
+    :param angle: angle of rotation to apply to images
+    """
+    new_dataset = list()
+    for image in dataset:
+        # Mode as ‘wrap’ fills the points outside the boundaries of the input with the remaining pixels of the image.
+        new_image = rotate(image, angle=angle, mode='wrap')
+        new_dataset.append(new_image)
+    return np.concatenate((np.array(new_dataset), dataset))
+
+
+def flip_dataset(dataset, horizontal=True):
+    """
+    Flip all images in the dataset, whether horizontally or vertically, returning the dataset plus the flipped ones.
+    
+    :param dataset: list of dataset images
+    :param horizontal: flip images horizontally if True, vertically otherwise
+    """
+    new_dataset = list()
+    if horizontal:
+        for image in dataset:
+            new_image = np.fliplr(image)
+            new_dataset.append(new_image)
+    else:
+        for image in dataset:
+            new_image = np.flipud(image)
+            new_dataset.append(new_image)
+    return np.concatenate((np.array(new_dataset), dataset))
+
+
+def noising_dataset(dataset):
+    """
+    Add some random noise to all images in the dataset, returning the dataset plus the noised ones.
+    
+    :param dataset: list of dataset images
+    """
+    new_dataset = list()
+    sigma = 0.155
+    for image in dataset:
+        new_image = random_noise(image, var=sigma**2)
+        new_dataset.append(new_image)
+    return np.concatenate((np.array(new_dataset), dataset))
+
+
+def blurring_dataset(dataset):
+    """
+    Blur images in the dataset, returning the dataset plus the blurred ones.
+    
+    :param dataset: list of dataset images
+    """
+    new_dataset = list()
+    for image in dataset:
+        # Setting Multichannel to true ensures that each channel of the image is filtered separately.
+        new_image = gaussian(image, sigma=1, multichannel=True)
+        new_dataset.append(new_image)
+    return np.concatenate((np.array(new_dataset), dataset))
+
+
+def demultiplier(dataset):
+    dataset = rotate_dataset(dataset, 90)
+    # print("rotate", dataset.shape)
+    dataset = flip_dataset(dataset)
+    # print("flip", dataset.shape)
+    dataset = flip_dataset(dataset, False)
+    # print("flip vertical", dataset.shape)
+    dataset = rotate_dataset(dataset, 45)
+    # print("rotate 45", dataset.shape)
+#     dataset = translate_dataset(dataset, #param)
+    dataset = noising_dataset(dataset)
+    # print("noise", dataset.shape)
+    dataset = blurring_dataset(dataset)
+    # print("blur", dataset.shape)
+    return dataset
+    
 
 #On recupere la liste des chemins vers les images du dataset originale
 #img_list = list_files_from_directory()
