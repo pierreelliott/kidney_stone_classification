@@ -10,3 +10,5 @@ api/upload/
 webapp/node_modules/
 
 training/.ipynb_checkpoints/
+
+*/__pycache__/
