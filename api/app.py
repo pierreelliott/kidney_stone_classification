@@ -4,12 +4,15 @@ Script de lancement de l'API pour la classification de cristaux.
 
 from flask import Flask, request, redirect, url_for, render_template
 from flask_cors import CORS
+import tensorflow as tf
 from werkzeug.utils import secure_filename
 import os
 from classifier import Classifier
 import json
 import random
 from PIL import Image
+
+tf.compat.v1.disable_eager_execution()
 
 port = 5000
 
