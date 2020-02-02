@@ -4,7 +4,7 @@
 
 <script>
     export default {
-        name: "tab-classify"
+        name: "Classify"
     }
 </script>
 

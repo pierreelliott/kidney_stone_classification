@@ -31,6 +31,7 @@ import Send from "./components/Send";
 import About from "./components/About";
 import Classify from "./components/Classify";
 import Contact from "./components/Contact";
+import Home from "./components/Home";
 
 export default {
   name: 'App',
@@ -41,13 +42,18 @@ export default {
     About,
     Classify,
     Contact,
+    Home,
     // HelloWorld,
   },
 
   data: () => ({
-    currentItem: 'about',
+    currentItem: 'home',
     items: [
-      'about', 'classify', 'send', 'contact',
+      {link: 'home', title: 'Accueil'},
+      {link: 'about', title: 'À propos du projet'},
+      {link: 'classify', title: 'Classifier un calcul rénal'},
+      {link: 'send', title: 'Envoyer un calcul rénal'},
+      {link: 'contact', title: 'Contact'},
     ]
   }),
   computed: {

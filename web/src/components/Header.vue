@@ -1,8 +1,7 @@
 <template>
     <v-app-bar
             app
-            color="primary"
-            dark
+            short
     >
         <div class="d-flex align-center">
 <!--            <v-img-->
@@ -33,13 +32,15 @@
         <template v-slot:extension>
             <v-tabs v-model="selected"
                     centered
-                    fixed-tabs>
+                    grow
+                    show-arrows
+            >
                 <v-tab
                         v-for="item in items"
-                        :key="item"
-                        :href="'#' + item"
+                        :key="item.link"
+                        :href="'#' + item.link"
                 >
-                    {{ item }}
+                    {{ item.title }}
                 </v-tab>
             </v-tabs>
         </template>
