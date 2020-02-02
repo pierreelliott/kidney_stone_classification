@@ -13,6 +13,11 @@
                 </div>
             </v-col>
             <v-col cols="12" sm="5" class="">
+                <h2>Je veux classifier ce calcul</h2>
+                <p>Sélectionnez votre image et nous allons tenter de déterminer sa classe.</p>
+
+                <v-divider class="my-4"></v-divider>
+
                 <v-form
                         ref="form"
                         v-model="valid"

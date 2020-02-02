@@ -11,6 +11,11 @@
                 </div>
             </v-col>
             <v-col cols="12" sm="6" md="5" class="">
+                <h2>J'apporte ma pierre à l'édifice</h2>
+                <p>Si vous êtes un spécialiste et que vous avez des photos de calculs de qualitée honorable dont vous
+                    connaissez la classe, l'algorithme serait ravi que vous les partagiez afin de nourrir son savoir !</p>
+
+                <v-divider class="my-4"></v-divider>
                 <v-form
                         ref="form"
                         v-model="valid"
