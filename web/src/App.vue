@@ -6,9 +6,9 @@
       <component
               v-bind:is="currentTabComponent"
       ></component>
-<!--      <v-tabs-items v-model="currentItem">-->
+<!--      <v-tabs-types v-model="currentItem">-->
 <!--        <v-tab-item-->
-<!--                v-for="item in items"-->
+<!--                v-for="item in types"-->
 <!--                :key="item"-->
 <!--                :value="item"-->
 <!--        >-->
@@ -19,7 +19,7 @@
 <!--            </v-card-text>-->
 <!--          </v-card>-->
 <!--        </v-tab-item>-->
-<!--      </v-tabs-items>-->
+<!--      </v-tabs-types>-->
     </v-content>
   </v-app>
 </template>
