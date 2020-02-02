@@ -50,19 +50,17 @@ def get_classe_cristal(type_of_image):
     :param: type_of_image: String (SEC = section or SUR = surface)
     :return: String correspondant soit a la classification du cristal soit a un message d'erreur
     """
-    if request.method == 'POST':
-        image_path = get_image_from_post(request, app.config['UPLOAD_FOLDER'])
-        if type_of_image == 'SEC':
-            classifier.set_type_of_image("SEC")
-        else:
-            classifier.set_type_of_image("SUR")
-        if image_path != -1:
-            prediction = classifier.get_prediction(image_path)
-            return prediction
-        else:
-            return 'No image found'
+    if request.method != 'POST':
+        return 'Bad request, POST expected', 405
+
+    if type_of_image == 'SEC' or type_of_image == 'SUR':
+        classifier.set_type_of_image(type_of_image)
+    image_path = get_image_from_post(request, app.config['UPLOAD_FOLDER'])
+    if image_path != -1:
+        prediction = classifier.get_prediction(image_path)
+        return prediction, 200
     else:
-        return 'Bad request, POST expected'
+        return 'No image found', 404
 
 
 @app.route('/classification_cristaux/chargerCristal', methods=['GET', 'POST'])
@@ -73,22 +71,22 @@ def upload_cristal():
 
     :return: String correspondant a un message d'acceptation ou d'une erreur
     """
-    if request.method == 'POST':
-        # Authentification
-        if not auth():
-            return 'Bad authentification, go back !'
+    if request.method != 'POST':
+        return 'Bad request, POST expected', 405
 
-        classe = request.form['classe']
-        type = request.form['type']
-        image_name = str(classe) + "_" + str(type) + "_" + str(random.randint(0, 10**20)) + ".jpg"
-        file_path = get_image_from_post(request, app.config['BD_FOLDER'], filename=image_name)
-        if file_path != -1:
-            print(image_name)
-            return "Thank you for the cristal"
-        else:
-            return "No image found"
+    # Authentification
+    if not auth():
+        return 'Bad authentification, go back !', 401
+
+    classe = request.form['classe']
+    type = request.form['type']
+    image_name = str(classe) + "_" + str(type) + "_" + str(random.randint(0, 10**20)) + ".jpg"
+    file_path = get_image_from_post(request, app.config['BD_FOLDER'], filename=image_name)
+    if file_path != -1:
+        print(image_name)
+        return "Thank you for the cristal", 201
     else:
-        return 'Bad request, POST expected'
+        return "No image found", 404
 
 
 def get_image_from_post(http_request, directory, filename=None):
