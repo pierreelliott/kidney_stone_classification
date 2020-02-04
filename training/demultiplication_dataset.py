@@ -72,10 +72,10 @@ def rotate_dataset(dataset, angle):
     :param angle: angle of rotation to apply to images
     """
     new_dataset = list()
-    for image in dataset:
+    for image, label in dataset:
         # Mode as ‘wrap’ fills the points outside the boundaries of the input with the remaining pixels of the image.
         new_image = rotate(image, angle=angle, mode='wrap')
-        new_dataset.append(new_image)
+        new_dataset.append((new_image, label))
     return np.concatenate((np.array(new_dataset), dataset))
 
 
@@ -88,13 +88,13 @@ def flip_dataset(dataset, horizontal=True):
     """
     new_dataset = list()
     if horizontal:
-        for image in dataset:
+        for image, label in dataset:
             new_image = np.fliplr(image)
-            new_dataset.append(new_image)
+            new_dataset.append((new_image, label))
     else:
-        for image in dataset:
+        for image, label in dataset:
             new_image = np.flipud(image)
-            new_dataset.append(new_image)
+            new_dataset.append((new_image, label))
     return np.concatenate((np.array(new_dataset), dataset))
 
 
@@ -106,9 +106,9 @@ def noising_dataset(dataset):
     """
     new_dataset = list()
     sigma = 0.155
-    for image in dataset:
+    for image, label in dataset:
         new_image = random_noise(image, var=sigma**2)
-        new_dataset.append(new_image)
+        new_dataset.append((new_image, label))
     return np.concatenate((np.array(new_dataset), dataset))
 
 
@@ -119,10 +119,10 @@ def blurring_dataset(dataset):
     :param dataset: list of dataset images
     """
     new_dataset = list()
-    for image in dataset:
+    for image, label in dataset:
         # Setting Multichannel to true ensures that each channel of the image is filtered separately.
         new_image = gaussian(image, sigma=1, multichannel=True)
-        new_dataset.append(new_image)
+        new_dataset.append((new_image, label))
     return np.concatenate((np.array(new_dataset), dataset))
 
 

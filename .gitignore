@@ -14,3 +14,5 @@ training/.ipynb_checkpoints/
 */__pycache__/
 
 training/training_checkpoints/
+
+web/dist/
