@@ -4,7 +4,7 @@ const API_PATH = process.env.VUE_APP_API_PATH || 'localhost';
 const API_PORT = process.env.VUE_APP_API_PORT || '5000';
 const API_PROTOCOL = process.env.VUE_APP_API_PROTOCOL || 'http';
 
-const API_BASEURL = `${API_PROTOCOL}://${API_PATH}:${API_PORT}`;
+export const API_BASEURL = `${API_PROTOCOL}://${API_PATH}:${API_PORT}`;
 
 export const sendForm = function (path, data) {
     if (typeof path !== 'string') {
