@@ -13,6 +13,12 @@ training/.ipynb_checkpoints/
 
 */__pycache__/
 
+<<<<<<< Updated upstream
 training/training_checkpoints/
 
 web/dist/
+=======
+training/features/
+
+training/mlp795.joblib
+>>>>>>> Stashed changes
