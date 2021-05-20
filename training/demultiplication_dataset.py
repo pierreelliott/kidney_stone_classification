@@ -20,7 +20,7 @@ def list_files_from_directory(directory="img/", extension="jpg"):
     :param directory: String chemin vers le repertoire a lister (absolu ou relatif) (par defaut "img/")
     :param extension: String extension des fichiers a lister (par defaut "jpg")
     :return: List de String des noms des fichiers listes
-    """u
+    """
     return list(f for f in listdir(directory) if f.endswith('.' + extension))
 
 

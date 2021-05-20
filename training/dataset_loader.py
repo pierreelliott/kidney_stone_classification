@@ -15,10 +15,6 @@ def load_and_split_dataset(dataset_root, data_types=('.jpg', '.png'), exclude_cl
         int_y.append(np.where(labels == value))
     y = np.array(int_y)
     y = np.reshape(y, (len(y), ))
-
-#     print(x.shape)
-#     print(y.shape)
-#     print(labels)
     
     # Mélange du dataset
     shuffled_indices = np.arange(len(x))
